@@ -1,20 +1,19 @@
 // get and display current day 
-
-let d = new Date();
-$("#currentDay").text("Today is: " + d.toDateString());
+$("#currentDay").text("Today is: " + moment().format("MMMM Do YYYY"));
 
 // get current hour 
 
-let hr = d.getHours();
+let hr = moment().format('HH');
 
 
 // create timeblock divs
 for (let i = 9; i <= 17; i++) {
     let newDiv = $("<div>").addClass("row time-block")
-    let timeElm = $("<p>").text(i + ":00").addClass("col-1 hour");
+    let timeElm = $("<p>").text(moment(i, "HH").format("h:00 A")).addClass("col-1 hour");
     let textAreaElm = $("<textarea>").addClass("col-10").attr("id", i);
-    let saveBtn = $("<button>").text("Save").addClass("col-1 saveBtn").attr("btnId", i);
-
+    let saveBtn = $("<button>").addClass("col-1 saveBtn").attr("btnId", i);
+    let icon = $("<i>").addClass("far fa-save ");
+    // <i class="far fa-save"></i>
     // check current time to display corrensponding background color on textarea
     if (hr > i){
         textAreaElm.addClass("past");
@@ -30,6 +29,7 @@ for (let i = 9; i <= 17; i++) {
     }
 
     // append all elems to container div
+    saveBtn.append(icon);
     newDiv.append(timeElm, textAreaElm, saveBtn);
     $(".container").append(newDiv);
 }
@@ -41,4 +41,5 @@ $(document).on("click",".saveBtn", saveSchedule);
 function saveSchedule(){
     let id = $(this).attr("btnId");
     localStorage.setItem(id, $("#"+id).val());
+    alert(id+ ":00 Saved!");
 }
