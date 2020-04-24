@@ -5,8 +5,7 @@ $("#currentDay").text("Today is: " + d.toDateString());
 
 // get current hour 
 
-let hr = 12;
-//d.getHours();
+let hr = d.getHours();
 
 
 // create timeblock divs
@@ -25,6 +24,10 @@ for (let i = 9; i <= 17; i++) {
         textAreaElm.addClass("future");
     }
 
+    // read textarea value from localstorage if it exists
+    if (localStorage.getItem(i) !== null){
+        textAreaElm.val(localStorage.getItem(i));
+    }
     newDiv.append(timeElm, textAreaElm, saveBtn);
     $(".container").append(newDiv);
 }
@@ -32,8 +35,8 @@ for (let i = 9; i <= 17; i++) {
 
 $(document).on("click",".saveBtn", saveSchedule);
 
-
+// get current button's id and save corresponding textarea's value to local storage 
 function saveSchedule(){
-    //alert($(this).attr("btnId"));
-    //console.log($("#"+$(this).attr("btnId")))
+    let id = $(this).attr("btnId");
+    localStorage.setItem(id, $("#"+id).val());
 }
