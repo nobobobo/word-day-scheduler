@@ -41,5 +41,5 @@ $(document).on("click",".saveBtn", saveSchedule);
 function saveSchedule(){
     let id = $(this).attr("btnId");
     localStorage.setItem(id, $("#"+id).val());
-    alert(id+ ":00 Saved!");
+    alert("Your schedule at " + id+ ":00 has been saved!");
 }
