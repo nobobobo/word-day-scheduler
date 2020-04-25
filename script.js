@@ -17,7 +17,7 @@ for (let i = 9; i <= 17; i++) {
     // check current time to display corrensponding background color on textarea
     if (hr > i){
         textAreaElm.addClass("past");
-    } else if (hr === i){
+    } else if (hr == i){
         textAreaElm.addClass("present");
     } else {
         textAreaElm.addClass("future");
