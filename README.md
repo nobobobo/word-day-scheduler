@@ -1,5 +1,7 @@
 # word-day-scheduler
 
+Application URL: https://nobobobo.github.io/word-day-scheduler/
+
 ### What is this 
 This application displays time schedule for business hours of the current day.
 Also it stores saved text to local storage. 
