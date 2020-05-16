@@ -1,4 +1,4 @@
-# word-day-scheduler
+# work-day-scheduler
 
 Application URL: https://nobobobo.github.io/word-day-scheduler/
 
